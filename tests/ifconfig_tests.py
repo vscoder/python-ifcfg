@@ -84,6 +84,28 @@ class IfcfgTestCase(IfcfgTestCase):
         eq_(interfaces['en0']['broadcast'], '192.168.0.255')
         eq_(interfaces['en0']['netmask'], '255.255.255.0')
 
+    def test_FreeBSD(self):
+        ifcfg.distro = 'FreeBSD'
+        ifcfg.Parser = ifcfg.get_parser_class()
+        parser = ifcfg.get_parser(ifconfig=ifconfig_out.FREEBSD)
+        interfaces = parser.interfaces
+        self.assertEqual(len(interfaces.keys()), 5)
+        # iflan0
+        eq_(interfaces['iflan0']['ether'], '00:50:56:80:7f:2a')
+        eq_(interfaces['iflan0']['inet'], '192.168.0.1')
+        eq_(interfaces['iflan0']['broadcast'], '192.168.3.255')
+        eq_(interfaces['iflan0']['netmask'], 22)
+        # ifwan0
+        eq_(interfaces['ifwan0']['ether'], '00:50:56:80:56:57')
+        eq_(interfaces['ifwan0']['inet'], '10.0.0.6')
+        eq_(interfaces['ifwan0']['broadcast'], '10.0.0.7')
+        eq_(interfaces['ifwan0']['netmask'], 30)
+        # ifcli715
+        eq_(interfaces['ifcli715']['ether'], '00:50:56:80:14:68')
+        eq_(interfaces['ifcli715']['inet'], '10.0.106.254')
+        eq_(interfaces['ifcli715']['broadcast'], '10.0.106.255')
+        eq_(interfaces['ifcli715']['netmask'], 24)
+
     def test_default_interface(self):
         ifcfg.distro = 'Linux'
         ifcfg.Parser = ifcfg.get_parser_class()

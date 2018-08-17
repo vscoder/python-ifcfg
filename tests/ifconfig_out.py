@@ -85,3 +85,36 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 169.254.0.0     0.0.0.0         255.255.0.0     U     1000   0        0 eth0
 192.168.1.0     0.0.0.0         255.255.255.0   U     600    0        0 eth0
 """
+
+FREEBSD = """
+iflan0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
+        options=9b<RXCSUM,TXCSUM,VLAN_MTU,VLAN_HWTAGGING,VLAN_HWCSUM>
+        ether 00:50:56:80:7f:2a
+        inet 192.168.0.1 netmask 0xfffffc00 broadcast 192.168.3.255
+        nd6 options=29<PERFORMNUD,IFDISABLED,AUTO_LINKLOCAL>
+        media: Ethernet autoselect (1000baseT <full-duplex>)
+        status: active
+ifwan0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
+        options=60039b<RXCSUM,TXCSUM,VLAN_MTU,VLAN_HWTAGGING,VLAN_HWCSUM,TSO4,TSO6,RXCSUM_IPV6,TXCSUM_IPV6>
+        ether 00:50:56:80:56:57
+        inet 10.0.0.6 netmask 0xfffffffc broadcast 10.0.0.7
+        nd6 options=29<PERFORMNUD,IFDISABLED,AUTO_LINKLOCAL>
+        media: Ethernet autoselect
+        status: active
+ifcli715: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
+        options=60039b<RXCSUM,TXCSUM,VLAN_MTU,VLAN_HWTAGGING,VLAN_HWCSUM,TSO4,TSO6,RXCSUM_IPV6,TXCSUM_IPV6>
+        ether 00:50:56:80:14:68
+        inet 10.0.106.254 netmask 0xffffff00 broadcast 10.0.106.255
+        nd6 options=29<PERFORMNUD,IFDISABLED,AUTO_LINKLOCAL>
+        media: Ethernet autoselect
+        status: active
+pflog0: flags=141<UP,RUNNING,PROMISC> metric 0 mtu 33160
+pfsync0: flags=0<> metric 0 mtu 1500
+        syncpeer: 0.0.0.0 maxupd: 128 defer: off
+lo0: flags=8049<UP,LOOPBACK,RUNNING,MULTICAST> metric 0 mtu 16384
+        options=600003<RXCSUM,TXCSUM,RXCSUM_IPV6,TXCSUM_IPV6>
+        inet6 ::1 prefixlen 128
+        inet6 fe80::1%lo0 prefixlen 64 scopeid 0x6
+        inet 127.0.0.1 netmask 0xff000000
+        nd6 options=21<PERFORMNUD,AUTO_LINKLOCAL>
+""" # noqa
