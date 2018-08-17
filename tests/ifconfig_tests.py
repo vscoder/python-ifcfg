@@ -62,6 +62,17 @@ class IfcfgTestCase(IfcfgTestCase):
         eq_(interfaces['eth0']['broadcast'], '192.168.0.255')
         eq_(interfaces['eth0']['netmask'], '255.255.255.0')
 
+    def test_linux4(self):
+        ifcfg.distro = 'Linux'
+        ifcfg.Parser = ifcfg.get_parser_class()
+        parser = ifcfg.get_parser(ifconfig=ifconfig_out.LINUX4)
+        interfaces = parser.interfaces
+        self.assertEqual(len(interfaces.keys()), 1)
+        eq_(interfaces['br-339b29e0f3aa']['ether'], '02:42:64:80:dd:3e')
+        eq_(interfaces['br-339b29e0f3aa']['inet'], '192.168.0.1')
+        eq_(interfaces['br-339b29e0f3aa']['broadcast'], '192.168.0.255')
+        eq_(interfaces['br-339b29e0f3aa']['netmask'], '255.255.255.0')
+
     def test_macosx(self):
         ifcfg.distro = 'MacOSX'
         ifcfg.Parser = ifcfg.get_parser_class()

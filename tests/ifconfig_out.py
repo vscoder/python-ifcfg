@@ -42,6 +42,16 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 16436
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 """
 
+LINUX4 = """
+br-339b29e0f3aa: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 192.168.0.1  netmask 255.255.255.0  broadcast 192.168.0.255
+        ether 02:42:64:80:dd:3e  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+"""
+
 LINUX = LINUX3
 
 
